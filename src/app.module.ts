@@ -3,6 +3,9 @@ import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { PeriodsModule } from './periods/periods.module';
+import { GroupsModule } from './groups/groups.module';
+import { ElementsModule } from './elements/elements.module';
 
 @Module({
   imports: [
@@ -19,6 +22,9 @@ import { AppService } from './app.service';
       models: [],
       autoLoadModels: true,
     }),
+    PeriodsModule,
+    GroupsModule,
+    ElementsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
