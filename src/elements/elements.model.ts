@@ -59,12 +59,4 @@ export class Element extends Model<Element> {
 
   @Column(DataType.STRING)
   oxidation_states: string;
-
-  // Foreign Keys (nullable for Lanthanides/Actinides)
-  @Column(DataType.INTEGER)
-  group_id: number;
-
-  @AllowNull(false)
-  @Column(DataType.INTEGER)
-  period_id: number;
 }
