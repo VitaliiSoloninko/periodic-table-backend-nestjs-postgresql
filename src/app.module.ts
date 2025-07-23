@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { PeriodsModule } from './periods/periods.module';
 import { GroupsModule } from './groups/groups.module';
 import { ElementsModule } from './elements/elements.module';
+import { CategoriesModule } from './categories/categories.module';
+import { StatesModule } from './states/states.module';
 
 @Module({
   imports: [
@@ -25,6 +27,8 @@ import { ElementsModule } from './elements/elements.module';
     PeriodsModule,
     GroupsModule,
     ElementsModule,
+    CategoriesModule,
+    StatesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
