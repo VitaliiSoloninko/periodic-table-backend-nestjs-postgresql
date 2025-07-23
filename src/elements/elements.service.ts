@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateElementDto } from './dto/create-element.dto';
+import { UpdateElementDto } from './dto/update-element.dto';
 import { Element } from './elements.model';
 
 @Injectable()
@@ -33,5 +34,26 @@ export class ElementsService {
       throw new NotFoundException(`Element with ID ${id} not found`);
     }
     return element;
+  }
+
+  async updateElement(
+    id: number,
+    updateElementDto: UpdateElementDto,
+  ): Promise<Element> {
+    const element = await this.elementRepository.findOne({ where: { id } });
+    if (!element) {
+      throw new NotFoundException(`Element with id ${id} not found`);
+    }
+    Object.assign(element, updateElementDto);
+    return await element.save();
+  }
+
+  async removeElement(id: number) {
+    const element = await this.elementRepository.findByPk(id);
+    if (!element) {
+      throw new NotFoundException(`Element with id ${id} not found`);
+    }
+    await element.destroy();
+    return { message: `Element with id ${id} has been deleted` };
   }
 }

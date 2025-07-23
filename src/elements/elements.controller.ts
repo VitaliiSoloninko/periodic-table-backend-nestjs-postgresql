@@ -1,6 +1,15 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateElementDto } from './dto/create-element.dto';
+import { UpdateElementDto } from './dto/update-element.dto';
 import { ElementsService } from './elements.service';
 
 @ApiTags('Elements')
@@ -27,5 +36,22 @@ export class ElementsController {
   @Get(':id')
   findOneElement(@Param('id') id: string) {
     return this.elementsService.findOneElement(+id);
+  }
+
+  @ApiOperation({ summary: 'Update element by id' })
+  @ApiResponse({ status: 200, type: UpdateElementDto })
+  @Patch(':id')
+  updateElement(
+    @Param('id') id: string,
+    @Body() updateElementDto: UpdateElementDto,
+  ) {
+    return this.elementsService.updateElement(+id, updateElementDto);
+  }
+
+  @ApiOperation({ summary: 'Delete element by id' })
+  @ApiResponse({ status: 200 })
+  @Delete(':id')
+  removeElement(@Param('id') id: string) {
+    return this.elementsService.removeElement(+id);
   }
 }

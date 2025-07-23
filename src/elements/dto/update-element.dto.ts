@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateElementDto {
+export class UpdateElementDto {
   @ApiProperty({
     example: 1,
     description: 'Ordnungszahl (1-118)',
