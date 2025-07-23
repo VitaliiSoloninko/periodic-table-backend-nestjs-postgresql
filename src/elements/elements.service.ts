@@ -18,12 +18,7 @@ export class ElementsService {
 
   async findAllElements(): Promise<Element[]> {
     const elements = await this.elementRepository.findAll<Element>({
-      include: [
-        { association: 'group' },
-        { association: 'period' },
-        { association: 'category' },
-        { association: 'state' },
-      ],
+      include: { all: true },
     });
     return elements;
   }
@@ -31,12 +26,7 @@ export class ElementsService {
   async findOneElement(id: number): Promise<Element | null> {
     const element = await this.elementRepository.findOne<Element>({
       where: { id },
-      include: [
-        { association: 'group' },
-        { association: 'period' },
-        { association: 'category' },
-        { association: 'state' },
-      ],
+      include: { all: true },
     });
 
     if (!element) {
