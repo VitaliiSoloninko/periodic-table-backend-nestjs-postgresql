@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Category } from './categories/categories.model';
 import { CategoriesModule } from './categories/categories.module';
+import { ElementsSearchModule } from './elements-search/elements-search.module';
 import { Element } from './elements/elements.model';
 import { ElementsModule } from './elements/elements.module';
 import { Group } from './groups/groups.model';
@@ -34,6 +35,7 @@ import { StatesModule } from './states/states.module';
     ElementsModule,
     CategoriesModule,
     StatesModule,
+    ElementsSearchModule,
   ],
   controllers: [AppController],
   providers: [AppService],
