@@ -11,6 +11,7 @@ import {
 
 @Table({
   tableName: 'periods',
+  timestamps: false,
 })
 export class Period extends Model<Period> {
   @PrimaryKey

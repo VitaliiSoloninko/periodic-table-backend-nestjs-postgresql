@@ -11,6 +11,7 @@ import {
 
 @Table({
   tableName: 'categories',
+  timestamps: false,
 })
 export class Category extends Model<Category> {
   @PrimaryKey

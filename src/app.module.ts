@@ -3,10 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PeriodsModule } from './periods/periods.module';
-import { GroupsModule } from './groups/groups.module';
-import { ElementsModule } from './elements/elements.module';
 import { CategoriesModule } from './categories/categories.module';
+import { ElementsModule } from './elements/elements.module';
+import { GroupsModule } from './groups/groups.module';
+import { PeriodsModule } from './periods/periods.module';
 import { StatesModule } from './states/states.module';
 
 @Module({

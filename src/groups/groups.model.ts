@@ -11,6 +11,7 @@ import {
 
 @Table({
   tableName: 'groups',
+  timestamps: false,
 })
 export class Group extends Model<Group> {
   @PrimaryKey

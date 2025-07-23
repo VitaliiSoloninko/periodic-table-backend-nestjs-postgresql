@@ -11,6 +11,7 @@ import {
 
 @Table({
   tableName: 'states',
+  timestamps: false,
 })
 export class State extends Model<State> {
   @PrimaryKey
