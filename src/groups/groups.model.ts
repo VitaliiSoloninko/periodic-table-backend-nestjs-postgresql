@@ -22,11 +22,4 @@ export class Group extends Model<Group> {
   @AllowNull(false)
   @Column(DataType.INTEGER)
   number: number;
-
-  @AllowNull(false)
-  @Column(DataType.STRING)
-  name: string;
-
-  @Column(DataType.STRING)
-  description: string;
 }

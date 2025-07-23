@@ -10,9 +10,9 @@ import {
 } from 'sequelize-typescript';
 
 @Table({
-  tableName: 'periods',
+  tableName: 'states',
 })
-export class Period extends Model<Period> {
+export class State extends Model<State> {
   @PrimaryKey
   @AutoIncrement
   @Column(DataType.INTEGER)
@@ -20,6 +20,6 @@ export class Period extends Model<Period> {
 
   @Unique
   @AllowNull(false)
-  @Column(DataType.INTEGER)
-  number: number;
+  @Column(DataType.STRING(20))
+  name: string;
 }

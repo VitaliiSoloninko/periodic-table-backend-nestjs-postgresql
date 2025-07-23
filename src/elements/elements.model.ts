@@ -26,7 +26,7 @@ export class Element extends Model<Element> {
 
   @Unique
   @AllowNull(false)
-  @Column(DataType.STRING)
+  @Column(DataType.STRING(3))
   symbol: string;
 
   @AllowNull(false)
@@ -35,12 +35,6 @@ export class Element extends Model<Element> {
 
   @Column(DataType.DECIMAL(10, 4))
   atomic_mass: number;
-
-  @Column(DataType.STRING)
-  state_of_matter: string;
-
-  @Column(DataType.STRING(30))
-  category: string;
 
   @Column(DataType.DECIMAL(10, 2))
   boiling_point: number;
@@ -54,9 +48,26 @@ export class Element extends Model<Element> {
   @Column(DataType.DECIMAL(10, 4))
   density: number;
 
-  @Column(DataType.TEXT)
+  @Column(DataType.STRING)
   discovered_by: string;
 
   @Column(DataType.STRING)
   oxidation_states: string;
+
+  // Foreign Keys
+
+  @AllowNull(false)
+  @Column(DataType.INTEGER)
+  state_id: number;
+
+  @AllowNull(false)
+  @Column(DataType.INTEGER)
+  category_id: number;
+
+  @Column(DataType.INTEGER)
+  group_id: number;
+
+  @AllowNull(false)
+  @Column(DataType.INTEGER)
+  period_id: number;
 }
