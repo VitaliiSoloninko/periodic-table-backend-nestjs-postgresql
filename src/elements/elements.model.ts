@@ -1,6 +1,7 @@
 import {
   AllowNull,
   AutoIncrement,
+  BelongsTo,
   Column,
   DataType,
   Model,
@@ -8,6 +9,10 @@ import {
   Table,
   Unique,
 } from 'sequelize-typescript';
+import { Category } from 'src/categories/categories.model';
+import { Group } from 'src/groups/groups.model';
+import { Period } from 'src/periods/periods.model';
+import { State } from 'src/states/states.model';
 
 @Table({
   tableName: 'elements',
@@ -54,20 +59,23 @@ export class Element extends Model<Element> {
   @Column(DataType.STRING)
   oxidation_states: string;
 
-  // Foreign Keys
+  @BelongsTo(() => State, {
+    foreignKey: 'state_id',
+  })
+  state: State;
 
-  @AllowNull(false)
-  @Column(DataType.INTEGER)
-  state_id: number;
+  @BelongsTo(() => Category, {
+    foreignKey: 'category_id',
+  })
+  category: Category;
 
-  @AllowNull(false)
-  @Column(DataType.INTEGER)
-  category_id: number;
+  @BelongsTo(() => Group, {
+    foreignKey: 'group_id',
+  })
+  group: Group;
 
-  @Column(DataType.INTEGER)
-  group_id: number;
-
-  @AllowNull(false)
-  @Column(DataType.INTEGER)
-  period_id: number;
+  @BelongsTo(() => Period, {
+    foreignKey: 'period_id',
+  })
+  period: Period;
 }
