@@ -8,12 +8,14 @@ async function start() {
 
   const config = new DocumentBuilder()
     .setTitle('Periodensystem-Explorer REST API')
-    .setDescription('Documentation REST API')
+    .setDescription('Entwickelt von Vitalii Soloninko')
     .setVersion('1.0.0')
-    .addTag('Entwickelt von Vitalii Soloninko')
+    .addTag('REST API Documentation')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api/docs', app, document);
+
+  app.enableCors();
 
   await app.listen(PORT, () =>
     console.log(`Server is running on port ${PORT}`),
