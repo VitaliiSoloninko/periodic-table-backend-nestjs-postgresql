@@ -8,19 +8,18 @@ Gebaut mit NestJS + PostgreSQL.
 
 ## Architektur
 
-Die Anwendung basiert:
+Die Architektur ist modular aufgebaut:
 
 - **elements** - Haupttabelle mit chemischen Elementen
-- **categories** - Nachschlagetabelle
 - **groups** - (1-18)
 - **periods** - (1-7)
 - **states** - (fest, flüssig, gasförmig)
+- **categories**
 
 ### Voraussetzungen
 
 - Node.js (Version 18+)
 - PostgreSQL (Version 13+)
-- npm oder yarn
 
 ### Abhängigkeiten installieren
 
@@ -30,8 +29,7 @@ npm install
 
 ### Datenbank-Konfiguration
 
-1. Erstellen Sie eine PostgreSQL-Datenbank
-2. Kopieren Sie `.development.env` zu `.env` und konfigurieren Sie die Verbindungsparameter:
+In `.development.env` konfigurieren Sie:
 
 ```env
 DB_HOST=localhost
@@ -41,13 +39,12 @@ DB_PASSWORD=ihr_passwort
 DB_NAME=periodic_table
 ```
 
+Wenn Sie ein Projekt ausführen, werden Datenbanktabellen automatisch erstellt.
+
 ### Anwendung starten
 
 ```bash
 # Entwicklungsmodus
-npm run start:dev
-
-# Entwicklungsmodus mit automatischem Neuladen
 npm run start:dev
 
 # Produktionsmodus
@@ -56,16 +53,12 @@ npm run start:prod
 
 Die Anwendung ist unter `http://localhost:3000` verfügbar
 
-## API-Dokumentation
-
-### Swagger UI
+## API-Dokumentation - Swagger UI
 
 - Lokal: `http://localhost:3000/api/docs`
 - Produktion: `https://periodic-table-backend-nestjs-postgresql-production.up.railway.app/api/docs`
 
 ### Haupt-Endpunkte
-
-#### Elemente
 
 - `GET /elements` - alle Elemente abrufen
 - `GET /elements/:id` - Element nach ID abrufen
@@ -73,21 +66,8 @@ Die Anwendung ist unter `http://localhost:3000` verfügbar
 - `PUT /elements/:id` - Element aktualisieren
 - `DELETE /elements/:id` - Element löschen
 
-#### Elementsuche
-
 - `GET /elements-search/by-name?name=wasserstoff`
 - `GET /elements-search/by-symbol?symbol=H`
-- `GET /elements-search/by-group?groupId=1`
-- `GET /elements-search/by-period?periodId=1`
-- `GET /elements-search/by-state?stateId=1`
-- `GET /elements-search/filter?name=&symbol=&groupId=1&periodId=1` - kombinierte Suche
-
-#### Nachschlagetabellen
-
-- `GET /categories` - alle Kategorien mit Elementen
-- `GET /groups` - alle Gruppen mit Elementen
-- `GET /periods` - alle Perioden mit Elementen
-- `GET /states` - alle Zustände mit Elementen
 
 ## Technologie-Stack
 
