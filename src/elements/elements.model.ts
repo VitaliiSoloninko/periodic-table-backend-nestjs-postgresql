@@ -82,11 +82,19 @@ export class Element extends Model<Element> {
 
   @ForeignKey(() => Category)
   @AllowNull(false)
-  @Column(DataType.INTEGER)
+  @Column({
+    type: DataType.INTEGER,
+    defaultValue: 1,
+    comment: 'Fest',
+  })
   category_id: number;
 
   @ForeignKey(() => Group)
-  @Column(DataType.INTEGER)
+  @Column({
+    type: DataType.INTEGER,
+    defaultValue: null,
+    comment: 'Null for lanthanides/actinides',
+  })
   group_id: number;
 
   @ForeignKey(() => Period)
