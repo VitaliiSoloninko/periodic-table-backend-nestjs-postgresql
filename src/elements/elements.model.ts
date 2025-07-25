@@ -5,6 +5,7 @@ import {
   Column,
   DataType,
   ForeignKey,
+  Index,
   Model,
   PrimaryKey,
   Table,
@@ -17,6 +18,17 @@ import { State } from 'src/states/states.model';
 
 @Table({
   tableName: 'elements',
+  indexes: [
+    {
+      fields: ['atomic_number'],
+    },
+    {
+      fields: ['name'],
+    },
+    {
+      fields: ['symbol'],
+    },
+  ],
 })
 export class Element extends Model<Element> {
   @PrimaryKey
@@ -27,15 +39,18 @@ export class Element extends Model<Element> {
 
   @Unique
   @AllowNull(false)
+  @Index('idx_atomic_number')
   @Column(DataType.INTEGER)
   atomic_number: number;
 
   @Unique
   @AllowNull(false)
+  @Index('idx_symbol')
   @Column(DataType.STRING(3))
   symbol: string;
 
   @AllowNull(false)
+  @Index('idx_name')
   @Column(DataType.STRING)
   name: string;
 
