@@ -3,11 +3,13 @@ import {
   AutoIncrement,
   Column,
   DataType,
+  HasMany,
   Model,
   PrimaryKey,
   Table,
   Unique,
 } from 'sequelize-typescript';
+import { Element } from 'src/elements/elements.model';
 
 @Table({
   tableName: 'periods',
@@ -23,4 +25,7 @@ export class Period extends Model<Period> {
   @AllowNull(false)
   @Column(DataType.INTEGER)
   number: number;
+
+  @HasMany(() => Element)
+  elements: Element[];
 }

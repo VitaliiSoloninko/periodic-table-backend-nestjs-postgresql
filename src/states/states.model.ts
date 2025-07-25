@@ -3,11 +3,13 @@ import {
   AutoIncrement,
   Column,
   DataType,
+  HasMany,
   Model,
   PrimaryKey,
   Table,
   Unique,
 } from 'sequelize-typescript';
+import { Element } from 'src/elements/elements.model';
 
 @Table({
   tableName: 'states',
@@ -23,4 +25,7 @@ export class State extends Model<State> {
   @AllowNull(false)
   @Column(DataType.STRING(20))
   name: string;
+
+  @HasMany(() => Element)
+  elements: Element[];
 }

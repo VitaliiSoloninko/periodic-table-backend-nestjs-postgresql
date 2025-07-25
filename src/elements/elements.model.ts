@@ -4,6 +4,7 @@ import {
   BelongsTo,
   Column,
   DataType,
+  ForeignKey,
   Model,
   PrimaryKey,
   Table,
@@ -59,23 +60,34 @@ export class Element extends Model<Element> {
   @Column(DataType.STRING)
   oxidation_states: string;
 
-  @BelongsTo(() => State, {
-    foreignKey: 'state_id',
-  })
+  @ForeignKey(() => State)
+  @AllowNull(false)
+  @Column(DataType.INTEGER)
+  state_id: number;
+
+  @ForeignKey(() => Category)
+  @AllowNull(false)
+  @Column(DataType.INTEGER)
+  category_id: number;
+
+  @ForeignKey(() => Group)
+  @Column(DataType.INTEGER)
+  group_id: number;
+
+  @ForeignKey(() => Period)
+  @AllowNull(false)
+  @Column(DataType.INTEGER)
+  period_id: number;
+
+  @BelongsTo(() => State)
   state: State;
 
-  @BelongsTo(() => Category, {
-    foreignKey: 'category_id',
-  })
+  @BelongsTo(() => Category)
   category: Category;
 
-  @BelongsTo(() => Group, {
-    foreignKey: 'group_id',
-  })
+  @BelongsTo(() => Group)
   group: Group;
 
-  @BelongsTo(() => Period, {
-    foreignKey: 'period_id',
-  })
+  @BelongsTo(() => Period)
   period: Period;
 }
